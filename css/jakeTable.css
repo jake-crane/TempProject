@@ -1,0 +1,62 @@
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+thead, tbody {
+    display: block;
+}
+
+tbody {
+    height: 500px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+}
+
+.flexStyle table, .flexStyle th, .flexStyle td {
+    border: none;
+}
+
+.flexStyle th {
+    border: 1px solid rgb(183, 186, 188);
+    background: linear-gradient(white, rgb(243, 243, 243));
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.flexStyle tr:nth-child(even) {
+    background-color: rgb(243, 243, 243);
+}
+
+.flexStyle td {
+    height: 20px;
+    border-right: 1px solid rgb(183, 186, 188);
+    border-left: 1px solid rgb(183, 186, 188);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.flexStyle tr > td:first-child {
+    table-layout: fixed;
+    width: 5px;
+}
+
+.flexStyle tr:last-child {
+    border-bottom: 1px solid rgb(183, 186, 188);
+}
+
+.flexStyle table {
+    border-collapse: collapse;
+    width: 100%;
+}
