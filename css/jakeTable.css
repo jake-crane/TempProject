@@ -9,9 +9,10 @@
     -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
 
-thead, tbody {
+
+/*thead, tbody {
     display: block;
-}
+}*/
 
 tbody {
     height: 500px;
@@ -47,10 +48,11 @@ tbody {
     padding-right: 5px;
 }
 
-.flexStyle tr > td:first-child {
+
+/*.flexStyle tr > td:first-child {
     table-layout: fixed;
     width: 5px;
-}
+}*/
 
 .flexStyle tr:last-child {
     border-bottom: 1px solid rgb(183, 186, 188);

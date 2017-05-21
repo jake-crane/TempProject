@@ -24,26 +24,33 @@
             this._getData();
 
             $(window).resize(this.resizeColumns.bind(this));
-            this.resizeColumns.apply(this);
         },
-
         setTotalWidth: function ($element, width) {
             var border = $element.outerWidth() - $element.innerWidth();
             var padding = $element.innerWidth() - $element.width();
             var margin = $element.outerWidth(true) - $element.outerWidth();
-            var newWidth = width - padding - margin - border;
+            var newWidth = (width - padding - margin - border) + 'px';
             $element.width(newWidth);
-        },
+            //$element[0].style.width = newWidth;
+            if ($element[0].style.width == newWidth)
+                console.log($element[0] + ' width is ' + $element[0].style.width + ' which is the desired ' + newWidth);
+            else
+                console.error($element[0] + ' width is ' + $element[0].style.width + ' instead of ' + newWidth);
 
+        },
         resizeColumns: function () {
             var $headers = this.$headerTable.find('th');
             var $dataCells = this.$bodyTable.find('td');
             for (var i = 0; i < $headers.length; i++) {
-                this.setTotalWidth($headers.eq(i), this.options.model[i].width);
+                //console.log('column ' + i + ' should be ' + this.options.model[i].width);
+                //this.setTotalWidth($headers.eq(i), this.options.model[i].width);
+                $headers.eq(i).width(this.options.model[i].width);
             }
             for (var i = 0; i < $dataCells.length; i++) {
                 var colIndex = i % $headers.length;
-                this.setTotalWidth($dataCells.eq(i), this.options.model[colIndex].width);
+                $dataCells.eq(i).width(this.options.model[colIndex].width);
+                //console.log('column ' + colIndex + ' should be ' + this.options.model[colIndex].width);
+                //this.setTotalWidth($dataCells.eq(i), this.options.model[colIndex].width);
             }
         },
 
@@ -60,6 +67,7 @@
                 rows += '</tr>';
                 this.$bodyTable.find('tbody').append(rows);
             }
+            this.resizeColumns.apply(this);
         },
 
         getDataError: function (data, textStatus, jqXHR) {
